@@ -6,7 +6,6 @@ import java.util.Objects;
 
 @Entity
 @Table
-
 public class Produto {
 
     @Id
@@ -19,9 +18,14 @@ public class Produto {
     @Column(nullable = false)
     private final BigDecimal valor;
 
-    public Produto(Long id, String descricao, BigDecimal valor) {
-        this.descricao = Objects.requireNonNull(descricao);
-        this.valor = Objects.requireNonNull(valor);
+
+    public Produto(String descricao, BigDecimal valor) {
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getDescricao() {

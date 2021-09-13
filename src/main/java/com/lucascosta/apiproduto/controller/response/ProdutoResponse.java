@@ -1,18 +1,34 @@
 package com.lucascosta.apiproduto.controller.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 
 public class ProdutoResponse {
 
-    private Long idResponse;
+    @JsonProperty("id")
+    private final Long idResponse;
 
-    private String descricao;
+    private final String descricao;
 
-    private BigDecimal valor;
+    private final BigDecimal valor;
+
 
     public ProdutoResponse(Long idResponse, String descricao, BigDecimal valor) {
         this.idResponse = idResponse;
         this.descricao = descricao;
         this.valor = valor;
+    }
+
+    public Long getIdResponse() {
+        return idResponse;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
     }
 }

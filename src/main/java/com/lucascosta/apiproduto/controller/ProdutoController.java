@@ -8,8 +8,6 @@ import com.lucascosta.apiproduto.mapper.ProdutoMapper;
 import com.lucascosta.apiproduto.model.Produto;
 import com.lucascosta.apiproduto.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("produto")
 public class ProdutoController {
 
-
     @Autowired
     ProdutoMapper produtoMapper;
 
@@ -27,15 +24,12 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @PostMapping
-    public ProdutoResponse inserir(@RequestBody ProdutoRequest produtoRequest){
-        Produto retorno = produtoService.inserir(produtoMapper.toProduto(produtoRequest));
-        ProdutoResponse produtoResponse = produtoMapper.toResponse(retorno);
-        return produtoResponse;
+    public ProdutoResponse inserir(@RequestBody ProdutoRequest produtoRequest) {
+        Produto produto = produtoService.inserir(produtoMapper.toProduto(produtoRequest));
+        return produtoMapper.toResponse(produto);
     }
-
-    /*  */
-
-
-    //todo depois adicionar model mapper ou mapstruct para mapear os atributos do dto
-
+    /*
+     * Foi criado uma classe de dto para transitar com os objetos de forma melhor
+     * o ideal é utilizar no método get.
+     * */
 }
